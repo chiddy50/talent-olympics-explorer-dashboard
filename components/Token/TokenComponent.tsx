@@ -7,7 +7,6 @@ import {
     TabsTrigger,
   } from "@/components/ui/tabs"
 import TokenBalanceComponent from './TokenBalanceComponent';
-import TokenMetadataComponent from './TokenMetadataComponent';
 
 function TokenComponent() {
   return (
