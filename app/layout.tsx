@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
-import SideNavbar from "@/components/SideNavbar";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import NavigationComponent from "@/components/NavigationComponent";
+import {MainContext} from "@/context/MainContext";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ 
+  subsets: ["latin"], 
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,17 +26,30 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen w-full bg-white text-black flex ",
-          inter.className,
+          "min-h-screen w-full flex flex-col",
+          montserrat.className,
           {
             "debug-screens": process.env.NODE_ENV === "development"
           }
         )}
       >
-        {/* sidebar */}
-        <SideNavbar />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <MainContext>
+            <div className="p-8 w-full">
+              <NavigationComponent />
+              {children}
+            </div>
+          </MainContext>
+        </ThemeProvider>
+
         {/* main page */}
-        <div className="p-8 w-full">{children}</div>
+        
+        <Toaster />
       </body>
     </html>
   );
