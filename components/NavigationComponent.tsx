@@ -20,10 +20,12 @@ function NavigationComponent() {
   return (
     <div>
       <header className="flex justify-between items-center w-[90%] mx-auto">
-        <div className='flex items-center gap-2'>
-          <StackIcon className='w-10 h-10'/>
-          <PageTitle title="EXPLORER" className='xs:hidden sm:block'/>
-        </div>
+        <Link href="/" className='cursor-pointer'>
+          <div className='flex items-center gap-2'>
+            <StackIcon className='w-10 h-10'/>
+            <PageTitle title="EXPLORER" className='xs:hidden sm:block'/>
+          </div>
+        </Link>  
 
         <div className='flex items-center gap-7'>
           <DropdownMenu>
@@ -54,6 +56,19 @@ function NavigationComponent() {
         <div className="text-center mt-4">
           <p className="text-lg">A simple blockchain explorer. Enabling users to explore transactions and address on the Solana network</p>
         </div>
+      </div>
+
+      <div className="flex items-center justify-center gap-5">
+        <Link href="/transaction">
+          <div className="bg-gray-700 font-bold text-gray-200 w-40 px-4 py-1 rounded-xl flex items-center justify-center">
+              Transaction
+          </div>
+        </Link>
+        <Link href="/token">
+          <div className="bg-gray-700 font-bold text-gray-200 w-40 px-4 py-1 rounded-xl flex items-center justify-center">
+            Token
+          </div>
+        </Link>
       </div>
 
     </div>
