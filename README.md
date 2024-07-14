@@ -1,4 +1,4 @@
-# Next.js Helius Explorer Dashboard
+# Next.js Solana Explorer/Dashboard
 This is a Next.js project bootstrapped with create-next-app.
 
 #### Project Overview
