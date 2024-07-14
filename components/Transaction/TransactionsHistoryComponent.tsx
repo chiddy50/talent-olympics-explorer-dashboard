@@ -27,7 +27,7 @@ import TransactionsTable from './TransactionsTable';
 import { Transaction, TransactionSource, TransactionType } from "@/interfaces/transactionInterface"
 
 const API_KEY = process.env.NEXT_PUBLIC_HELIUS_API_KEY;
-const HELIUS_API_BASE_URL = process.env.NEXT_PUBLIC_HELIOS_URL;
+const HELIUS_API_BASE_URL = process.env.NEXT_PUBLIC_HELIOS_API_URL;
 
 function TransactionsHistoryComponent() {
     const [address, setAddress] = useState<string >('');

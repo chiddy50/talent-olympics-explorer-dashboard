@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_KEY = process.env.NEXT_PUBLIC_HELIUS_API_KEY;
-const HELIUS_API_BASE_URL = process.env.NEXT_PUBLIC_HELIOS_URL;
+const HELIUS_API_BASE_URL = process.env.NEXT_PUBLIC_HELIOS_API_URL;
 const HELIOS_RPC_URL = process.env.NEXT_PUBLIC_HELIOS_RPC_URL;
 
 
