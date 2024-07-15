@@ -38,7 +38,6 @@ export const fetchTransactionDetails = async (signature: string) => {
             `${HELIUS_API_BASE_URL}/transactions?api-key=${API_KEY}`,
             body
         );  
-        console.log("transaction response: ", response);
         return response?.data
     } catch (error) {
         console.error(error);        
@@ -68,7 +67,6 @@ export const fetchAssetsByOwner = async (address: string, page: number) => {
       }),
     });
     const result = await response.json();
-    console.log("Assets by Owner: ", result);
     return result?.result?.items ?? []
 };
 

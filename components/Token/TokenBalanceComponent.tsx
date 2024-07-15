@@ -63,7 +63,6 @@ function TokenBalanceComponent() {
 
     const validateAddress = async (address: string) => {
         let validAddress = await validateSolanaAddress(address)
-        console.log({validAddress});
         if (!validAddress) {
             return;    
         }
@@ -91,7 +90,6 @@ function TokenBalanceComponent() {
 
     const paginateParseTransactions = async (pageNumber: number) => {
         let newPageNumber = page + pageNumber;
-        console.log(newPageNumber);
         if (newPageNumber < 1) {
             setPage(1)     
             return       

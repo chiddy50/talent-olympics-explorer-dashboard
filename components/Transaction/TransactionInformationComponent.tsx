@@ -20,7 +20,6 @@ interface TransactionInformationComponentProps {
 }
 
 const TransactionInformationComponent: React.FC<TransactionInformationComponentProps> = ({children, transaction}) => {
-    console.log("transaction", transaction);
     
     return (
         <Sheet>

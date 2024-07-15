@@ -60,7 +60,6 @@ function TransactionsHistoryComponent() {
 
     const validateAddress = async (address: string) => {
         let validAddress = await validateSolanaAddress(address)
-        console.log(validAddress);
         if (!validAddress) {
             return;    
         }

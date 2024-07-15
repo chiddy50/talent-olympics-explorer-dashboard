@@ -31,11 +31,6 @@ export function ComboboxComponent({ label, data, value, setValue, className }: C
     null
   )
 
-  useEffect(() => {
-    // console.log({value});
-    // setValue(selectedStatus)
-  }, [value])
-
   return (
     //space-x-4
     <div className="flex items-center"> 
