@@ -3,8 +3,6 @@
 import React from 'react'
 import {
     Tabs,
-    TabsList,
-    TabsTrigger,
   } from "@/components/ui/tabs"
 import TokenBalanceComponent from './TokenBalanceComponent';
 

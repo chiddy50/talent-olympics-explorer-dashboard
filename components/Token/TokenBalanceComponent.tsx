@@ -6,27 +6,18 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 
 import {
-  Tabs,
   TabsContent,
-  TabsList,
-  TabsTrigger,
 } from "@/components/ui/tabs";
 import { Label } from '@/components/ui/label';
-import { Copy, Search } from 'lucide-react';
-import { copyToClipboard, truncateString, validateSolanaAddress } from '@/lib/helper';
+import { Search } from 'lucide-react';
+import { validateSolanaAddress } from '@/lib/helper';
 import { fetchAssetsByOwner } from '@/lib/heliusApi';
 import { Skeleton } from '@/components/ui/skeleton';
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover";
 
 import {
     Pagination,
@@ -43,7 +34,6 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import CopyTextComponent from '../General/CopyTextComponent';
 import { TokenBalance } from '@/interfaces/tokenInterface';
 
 import {

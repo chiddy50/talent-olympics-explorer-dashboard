@@ -28,57 +28,34 @@ const TokenInformationComponent: React.FC<TokenInformationComponentProps> = ({ c
     const token_info = asset?.token_info ?? null
 
     const displayAssetTitle = (asset: TokenBalance) => {
-        let metadataName = asset?.content?.metadata?.name ?? null;
-        if (metadataName) {
-            return metadataName;
-        }
+        const metadataName = asset?.content?.metadata?.name;
+        if (metadataName) return metadataName;
+    
+        const tokenInfoCurrency = asset?.token_info?.price_info?.currency;
+        if (tokenInfoCurrency) return tokenInfoCurrency;
+    
+        const metadataDescription = asset?.content?.metadata?.description;
+        if (metadataDescription) return metadataDescription;
+    
+        return asset?.interface;
+    };
+    
 
-        let tokenInfoCurrency = asset?.token_info?.price_info?.currency ?? null;
-        if (tokenInfoCurrency) {
-            return tokenInfoCurrency;
-        }
-
-        let metadataDescription = asset?.content?.metadata?.description ?? null;
-        if (metadataDescription) {
-            return metadataDescription;
-        }
-
-        return asset?.interface
-    }
-
-    const displayAssetImage = (asset: TokenBalance) => {
-        let contentCNDImageUri = asset?.content?.files[0]?.cdn_uri ?? null;
-        if (contentCNDImageUri) {            
-            return contentCNDImageUri
-        }
-
-        let contentLinksImage = asset?.content?.links?.image ?? null;
-        if (contentLinksImage) {            
-            return contentLinksImage
-        }
-        return null
-    }
+    const displayAssetImage = (asset: TokenBalance): string | null => {
+        return asset?.content?.files?.[0]?.cdn_uri ?? asset?.content?.links?.image ?? null;
+    }    
 
     const displayAssetDescription = (asset: TokenBalance) => {
-        let metadataDescription = asset?.content?.metadata?.description ?? null;
-        if (metadataDescription) {
-            return metadataDescription;
-        }
-        let metadataName = asset?.content?.metadata?.name ?? null;
-        if (metadataName) {
-            return metadataName;
-        }
-        return ''
+        return asset?.content?.metadata?.description 
+            ?? asset?.content?.metadata?.name 
+            ?? '';
     }
-
-    const calculateBalance = (balance: number, decimals: number) => {
-        let number = "1"
-        for (let index = 0; index < decimals; index++) {            
-            number += "0";
-        }
-
-        return balance / Number(number);
+    
+    const calculateBalance = (balance: number, decimals: number): number => {
+        const divisor = Math.pow(10, decimals);
+        return balance / divisor;
     }
+    
 
     return (
         <Sheet>
@@ -90,7 +67,7 @@ const TokenInformationComponent: React.FC<TokenInformationComponentProps> = ({ c
                     {
                         displayAssetImage(asset) &&
                         <img 
-                        src={displayAssetImage(asset)} 
+                        src={displayAssetImage(asset) || undefined} 
                         alt={displayAssetTitle(asset)}
                     
                         className='w-32 h-32 rounded-md mb-4'
