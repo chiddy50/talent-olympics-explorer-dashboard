@@ -89,41 +89,31 @@ function TokenBalanceComponent() {
     }
 
     const paginateParseTransactions = async (pageNumber: number) => {
-        let newPageNumber = page + pageNumber;
-        if (newPageNumber < 1) {
-            setPage(1)     
-            return       
-        }
-
+        const newPageNumber = Math.max(page + pageNumber, 1);
+    
         setLoading(true);
         setAssets([]);
-        const response = await fetchAssetsByOwner(address, newPageNumber);
-        setLoading(false)
-        
-        if (!response) {
-            return
+    
+        try {
+            const response = await fetchAssetsByOwner(address, newPageNumber);
+            if (response) {
+                setAssets(response);
+                setPage(newPageNumber);
+            }
+        } catch (error) {
+            console.error("Failed to fetch assets", error);
+        } finally {
+            setLoading(false);
         }
-        setAssets(response) 
-        setPage(newPageNumber)
-    }
+    };
     
     const displayAssetTitle = (asset: TokenBalance) => {
-        let metadataName = asset?.content?.metadata?.name ?? null;
-        if (metadataName) {
-            return metadataName;
-        }
-
-        let tokenInfoCurrency = asset?.token_info?.price_info?.currency ?? null;
-        if (tokenInfoCurrency) {
-            return tokenInfoCurrency;
-        }
-
-        let metadataDescription = asset?.content?.metadata?.description ?? null;
-        if (metadataDescription) {
-            return metadataDescription;
-        }
-
-        return asset?.interface
+        return (
+            asset?.content?.metadata?.name ?? 
+            asset?.token_info?.price_info?.currency ?? 
+            asset?.content?.metadata?.description ?? 
+            asset?.interface
+        );
     }
 
     const displayAssetImage = (asset: TokenBalance) => {
@@ -137,12 +127,6 @@ function TokenBalanceComponent() {
             return contentLinksImage
         }
         return null
-    }
-
-    const triggerTokenInfoModal = (info: object, tokenName: string) => {
-        setOpenTokenInfoModal(true)
-        let newInfo = {...info, tokenName}
-        setTokenInfo(newInfo)
     }
 
     return (

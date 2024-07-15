@@ -1,4 +1,3 @@
-import PageTitle from '@/components/PageTitle'
 import TokenComponent from '@/components/Token/TokenComponent'
 
 function TokenPage() {
