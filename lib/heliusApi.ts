@@ -69,15 +69,3 @@ export const fetchAssetsByOwner = async (address: string, page: number) => {
     const result = await response.json();
     return result?.result?.items ?? []
 };
-
-
-export const fetchAccountInfo = async (address: string) => {
-    const response = await axios.get(`${HELIUS_API_BASE_URL}/account/${address}?api-key=${API_KEY}`);
-    return response.data;
-};
-
-export const fetchTokenBalances = async (address: string) => {
-    const response = await axios.get(`${HELIUS_API_BASE_URL}/tokens/${address}?api-key=${API_KEY}`);
-    return response.data;
-};
-
