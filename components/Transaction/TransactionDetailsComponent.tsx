@@ -1,26 +1,20 @@
 "use client";
 
 import React, { useState } from 'react'
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
-  Tabs,
   TabsContent,
-  TabsList,
-  TabsTrigger,
 } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
 
-import { copyToClipboard, formatTimestamp, validateSolanaAddress } from '@/lib/helper';
+import { formatTimestamp } from '@/lib/helper';
 import { Copy, Search } from 'lucide-react';
 import { fetchTransactionDetails } from '@/lib/heliusApi';
 import { Transaction } from '@/interfaces/transactionInterface';

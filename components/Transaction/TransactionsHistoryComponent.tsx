@@ -5,29 +5,20 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
+  TabsContent
 } from "@/components/ui/tabs"
 import { Search } from 'lucide-react';
 import { fetchAddressTransactions } from '@/lib/heliusApi';
 import { validateSolanaAddress } from '@/lib/helper';
 
 import { Skeleton } from "@/components/ui/skeleton"
-import { ComboboxComponent } from '@/components/ComboboxComponent';
 import TransactionsTable from './TransactionsTable';
 import { Transaction, TransactionSource, TransactionType } from "@/interfaces/transactionInterface"
-
-const API_KEY = process.env.NEXT_PUBLIC_HELIUS_API_KEY;
-const HELIUS_API_BASE_URL = process.env.NEXT_PUBLIC_HELIOS_API_URL;
 
 function TransactionsHistoryComponent() {
     const [address, setAddress] = useState<string >('');

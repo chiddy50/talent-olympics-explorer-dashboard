@@ -20,33 +20,12 @@ import { AppContext } from '@/context/MainContext';
 import TransactionInformationComponent from './TransactionInformationComponent';
 import { SheetTrigger } from '../ui/sheet';
 
-const transferDescription = (transaction: Transaction) => {    
-
-    let nativeTransfers = transaction.tokenTransfers?.[0] ?? null;
-    if (nativeTransfers) {        
-        return {
-            error: false,
-            from: nativeTransfers.fromUserAccount as string,
-            to: nativeTransfers.toUserAccount as string,
-            amount: nativeTransfers.tokenAmount
-        }
-    }
-    return {
-        error: true,
-        description: transaction.description
-    }
-}
-
 
 function TransactionsTable({ transactions }: { transactions: Transaction[]}) {
     const { 
         setSingleTransaction
     } = useContext(AppContext);
 
-    const triggerOpenTransactionInfo = (transaction: Transaction) => {
-        setSingleTransaction(transaction)
-    }
-    
     return (
         <Table className='border'>
             <TableCaption>The list of address transactions.</TableCaption>
