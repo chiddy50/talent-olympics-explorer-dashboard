@@ -47,7 +47,6 @@ function TokenBalanceComponent() {
     const [loading, setLoading] = useState<boolean>(false);
     const [page, setPage] = useState<number>(1);
     const [assets, setAssets] = useState<TokenBalance[]>([]);
-    const [openTokenInfoModal, setOpenTokenInfoModal] = useState(false);
     const [tokenInfo, setTokenInfo] = useState<object|null>(null);
     
 
